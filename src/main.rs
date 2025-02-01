@@ -5,7 +5,7 @@ fn main() {
         is_hot: bool,
     }
 
-    let mocha: Coffee = Coffee {
+    let mut mocha: Coffee = Coffee {
         price: 5.99,
         name: String::from("Mocha"),
         is_hot: true,
@@ -17,4 +17,7 @@ fn main() {
     );
 
     let favorite_coffee: String = mocha.name;
+    mocha.price = 7.99;
+
+    println!("{}", mocha.price)
 }

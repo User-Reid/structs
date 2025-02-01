@@ -1,3 +1,4 @@
+#[derive(Debug)]
 struct Coffee {
     name: String,
     price: f64,
@@ -19,9 +20,10 @@ fn drink_coffee(coffee: &mut Coffee) {
 }
 
 fn main() {
-    let mut mocha: Coffee = make_coffee(String::from("Mocha"), 4.99, true);
+    let mocha: Coffee = make_coffee(String::from("Mocha"), 4.99, true);
 
-    drink_coffee(&mut mocha);
-
-    println!("{}", mocha.name)
+    let values: [&str; 2] = ["Hello", "World"];
+    // println!("{}", mocha);
+    println!("{:?}", mocha);
+    println!("{:#?}", mocha);
 }

@@ -1,23 +1,19 @@
+struct Coffee {
+    name: String,
+    price: f64,
+    is_hot: bool,
+}
+
 fn main() {
-    struct Coffee {
-        price: f64,
-        name: String,
-        is_hot: bool,
+    let name: String = String::from("Mocha");
+    let coffee: Coffee = make_coffee(name, 5.99, true);
+
+    fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
+        Coffee {
+            name: name,
+            price: price,
+            is_hot: is_hot,
+        }
     }
-
-    let mut mocha: Coffee = Coffee {
-        price: 5.99,
-        name: String::from("Mocha"),
-        is_hot: true,
-    };
-
-    println!(
-        "My {} this morning cost {}, and indeed it was {} that it was hot.",
-        mocha.name, mocha.price, mocha.is_hot
-    );
-
-    let favorite_coffee: String = mocha.name;
-    mocha.price = 7.99;
-
-    println!("{}", mocha.price)
+    println!("{}, {}, {}", coffee.name, coffee.price, coffee.is_hot)
 }

@@ -10,7 +10,7 @@ struct TaylorSwiftSong {
 impl TaylorSwiftSong {
     fn display_song_info(&self) {
         println!("Title: {}", self.title);
-        println!("Release Year {}", self.release_year);
+        println!("Years since release: {}", self.years_since_release());
         println!("Duration: {} seconds", self.duration_secs);
     }
 
@@ -20,6 +20,10 @@ impl TaylorSwiftSong {
 
     fn is_longer_than(&self, x: &Self) -> bool {
         self.duration_secs > x.duration_secs
+    }
+
+    fn years_since_release(&self) -> u32 {
+        2024 - &self.release_year
     }
 }
 
@@ -42,6 +46,11 @@ fn main() {
             blank_space.title, all_too_well.title
         )
     } else {
-        println!("{} is longer than {}", all_too_well.title, blank_space.title)
+        println!(
+            "{} is longer than {}",
+            all_too_well.title, blank_space.title
+        )
     }
+
+    all_too_well.display_song_info();
 }

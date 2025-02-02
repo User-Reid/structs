@@ -1,29 +1,28 @@
 #[derive(Debug)]
-struct Coffee {
-    name: String,
-    price: f64,
-    is_hot: bool,
+struct TaylorSwiftSong {
+    title: String,
+    release_year: u32,
+    duration_secs: u32,
 }
 
-fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
-    Coffee {
-        name,
-        price,
-        is_hot,
+impl TaylorSwiftSong {
+    fn display_song_info(self: Self) {
+        // Immutable struct value (self param takes ownership)
+        // Mutable struct value (self parameter takes ownership, has permission to mutate)
+        // Immutable reference to the struct instance (no ownership moved)
+        // Mutable reference to the struct instance (no ownership moved, have permission to mutate)
+        println!("Title: {}", self.title);
+        println!("Release Year {}", self.release_year);
+        println!("Duration: {} seconds", self.duration_secs);
     }
 }
 
-fn drink_coffee(coffee: &mut Coffee) {
-    println!("I am now drinking my delicious {}", coffee.name);
-    coffee.is_hot = false;
-    coffee.price = 100.22
-}
-
 fn main() {
-    let mocha: Coffee = make_coffee(String::from("Mocha"), 4.99, true);
+    let song: TaylorSwiftSong = TaylorSwiftSong {
+        title: String::from("Blank Space"),
+        release_year: 2014,
+        duration_secs: 231,
+    };
 
-    let values: [&str; 2] = ["Hello", "World"];
-    // println!("{}", mocha);
-    println!("{:?}", mocha);
-    println!("{:#?}", mocha);
+    song.display_song_info();
 }

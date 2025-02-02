@@ -1,3 +1,5 @@
+use std::hint::black_box;
+
 #[derive(Debug)]
 struct TaylorSwiftSong {
     title: String,
@@ -6,29 +8,40 @@ struct TaylorSwiftSong {
 }
 
 impl TaylorSwiftSong {
-    // Immutable struct value (self param takes ownership)
-    // -> Immutable reference to the struct instance (no ownership moved)
     fn display_song_info(&self) {
         println!("Title: {}", self.title);
         println!("Release Year {}", self.release_year);
         println!("Duration: {} seconds", self.duration_secs);
     }
 
-    // Mutable struct value (self parameter takes ownership, has permission to mutate)
-    // Mutable reference to the struct instance (no ownership moved, have permission to mutate)
     fn double_length(&mut self) {
         self.duration_secs = self.duration_secs * 2;
+    }
+
+    fn is_longer_than(&self, x: &Self) -> bool {
+        self.duration_secs > x.duration_secs
     }
 }
 
 fn main() {
-    let mut song: TaylorSwiftSong = TaylorSwiftSong {
+    let blank_space: TaylorSwiftSong = TaylorSwiftSong {
         title: String::from("Blank Space"),
         release_year: 2014,
         duration_secs: 231,
     };
 
-    song.display_song_info();
-    song.double_length();
-    song.display_song_info();
+    let all_too_well: TaylorSwiftSong = TaylorSwiftSong {
+        title: String::from("All Too Well"),
+        release_year: 2014,
+        duration_secs: 327,
+    };
+
+    if blank_space.is_longer_than(&all_too_well) {
+        println!(
+            "{} is longer than {}",
+            blank_space.title, all_too_well.title
+        )
+    } else {
+        println!("{} is longer than {}", all_too_well.title, blank_space.title)
+    }
 }

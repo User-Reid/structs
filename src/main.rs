@@ -1,5 +1,3 @@
-use std::hint::black_box;
-
 #[derive(Debug)]
 struct TaylorSwiftSong {
     title: String,
@@ -8,6 +6,14 @@ struct TaylorSwiftSong {
 }
 
 impl TaylorSwiftSong {
+    fn new(title: String, release_year: u32, duration_secs: u32) -> Self {
+        Self {
+            title,
+            release_year,
+            duration_secs,
+        }
+    }
+
     fn display_song_info(&self) {
         println!("Title: {}", self.title);
         println!("Years since release: {}", self.years_since_release());
@@ -28,11 +34,7 @@ impl TaylorSwiftSong {
 }
 
 fn main() {
-    let blank_space: TaylorSwiftSong = TaylorSwiftSong {
-        title: String::from("Blank Space"),
-        release_year: 2014,
-        duration_secs: 231,
-    };
+    let blank_space = TaylorSwiftSong::new(String::from("Bad Bitch"), 2024, 399);
 
     let all_too_well: TaylorSwiftSong = TaylorSwiftSong {
         title: String::from("All Too Well"),

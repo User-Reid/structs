@@ -13,7 +13,9 @@ impl TaylorSwiftSong {
             duration_secs,
         }
     }
+}
 
+impl TaylorSwiftSong {
     fn display_song_info(&self) {
         println!("Title: {}", self.title);
         println!("Years since release: {}", self.years_since_release());
@@ -55,4 +57,5 @@ fn main() {
     }
 
     all_too_well.display_song_info();
+    blank_space.display_song_info();
 }
